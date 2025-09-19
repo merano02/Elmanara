@@ -1,998 +1,293 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة المنارة - خدمات نقل العفش وتنظيف المنازل</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Cairo', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            margin-left: 10px;
-        }
-        
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2c5aa0;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: #2c5aa0;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #2c5aa0;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23grad)"/><circle cx="800" cy="300" r="150" fill="url(%23grad)"/><circle cx="500" cy="700" r="120" fill="url(%23grad)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 2rem;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .hero-logo {
-            width: 80px;
-            height: 80px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 100px 5%;
-            background: #f8f9fa;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(102,126,234,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(118,75,162,0.1)"/><circle cx="60" cy="80" r="1" fill="rgba(102,126,234,0.1)"/></svg>');
-            animation: float 30s ease-in-out infinite;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            color: #333;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .service-card::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            width: 100px;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="rgba(102,126,234,0.05)"/><circle cx="50" cy="60" r="2" fill="rgba(118,75,162,0.05)"/><circle cx="80" cy="30" r="2.5" fill="rgba(102,126,234,0.05)"/></svg>');
-            opacity: 0.6;
-        }
-        
-        .service-card:hover::before {
-            left: 100%;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-        }
-        
-        .service-icon {
-            font-size: 4rem;
-            color: #667eea;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 100px 5%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .about-image {
-            position: relative;
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem 1rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-text {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .contact {
-            padding: 100px 5%;
-            background: #f8f9fa;
-            position: relative;
-        }
-        
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="50" cy="50" r="20" fill="rgba(102,126,234,0.05)"/><circle cx="150" cy="100" r="15" fill="rgba(118,75,162,0.05)"/><circle cx="100" cy="150" r="25" fill="rgba(102,126,234,0.03)"/><path d="M20 20 Q100 80 180 20" stroke="rgba(102,126,234,0.1)" stroke-width="2" fill="none"/></svg>');
-            opacity: 0.6;
-        }
-        
-        .contact-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-        
-        .contact-header-image {
-            width: 200px;
-            height: 150px;
-            margin: 0 auto 2rem;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-        
-        .contact-info {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-info::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 100px;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="30" r="8" fill="rgba(102,126,234,0.1)"/><circle cx="70" cy="60" r="6" fill="rgba(118,75,162,0.1)"/><path d="M20 80 Q50 60 80 80" stroke="rgba(102,126,234,0.2)" stroke-width="2" fill="none"/></svg>');
-            opacity: 0.5;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-        
-        .contact-item:hover {
-            background: #f0f0f0;
-        }
-        
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #667eea;
-            margin-left: 1rem;
-            min-width: 40px;
-        }
-        
-        .contact-item div h4 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-item div p {
-            color: #666;
-            margin: 0;
-        }
-        
-        .contact-item div a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-item div a:hover {
-            color: #764ba2;
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-form::before {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 80px;
-            height: 80px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect x="20" y="20" width="15" height="10" fill="rgba(102,126,234,0.1)" rx="2"/><circle cx="50" cy="40" r="8" fill="rgba(118,75,162,0.1)"/><path d="M10 60 Q40 50 70 60" stroke="rgba(102,126,234,0.2)" stroke-width="1.5" fill="none"/></svg>');
-            opacity: 0.6;
-        }
-        
-        .form-group {
-            margin-bottom: 2rem;
-        }
-        
-        .form-group label {
-            display: block;
-            color: #333;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: 'Cairo', sans-serif;
-            transition: border-color 0.3s ease;
-            resize: vertical;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"><circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.03)"/><circle cx="250" cy="100" r="30" fill="rgba(255,255,255,0.02)"/><circle cx="150" cy="150" r="15" fill="rgba(255,255,255,0.03)"/><path d="M0 100 Q150 50 300 100" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none"/></svg>');
-            opacity: 0.8;
-        } {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer-content h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-        
-        .footer-content p {
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: #667eea;
-            transform: translateY(-3px);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .logo-text {
-                font-size: 1.4rem;
-            }
-            
-            .logo-img {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .hero-logo {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>المنارة — نقل عفش و تنظيف منازل</title>
+<meta name="description" content="المنارة - خدمات نقل عفش محترفة وتنظيف المنازل في القصيم، المملكة العربية السعودية" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap">
+<style>
+  :root{
+    --accent:#0d6efd;
+    --dark:#0b1320;
+    --muted:#6b7280;
+    --card:#ffffff;
+    --glass: rgba(255,255,255,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:'Almarai',sans-serif;
+    background:linear-gradient(180deg,#f7fbff 0%, #eef6ff 100%);
+    color:var(--dark);
+    direction:rtl;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* container */
+  .wrap{max-width:1100px;margin:30px auto;padding:20px;}
+
+  /* header */
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,0.9),rgba(255,255,255,0.75));box-shadow:0 6px 25px rgba(11,19,32,0.06);backdrop-filter: blur(6px);}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#4f46e5);
+    color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;box-shadow:0 6px 18px rgba(13,110,253,0.18);
+    transform:translateY(-2px);
+  }
+  h1{margin:0;font-size:20px}
+  .sub{font-size:12px;color:var(--muted)}
+
+  nav{display:flex;gap:12px;align-items:center}
+  .btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(11,19,32,0.06);cursor:pointer;transition:all .28s}
+  .btn.primary{background:var(--accent);color:white;border:none;box-shadow:0 8px 24px rgba(13,110,253,0.18);}
+  .btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(11,19,32,0.06)}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:26px;align-items:center}
+  .hero-card{padding:28px;border-radius:14px;background:linear-gradient(180deg,white, #fbfdff);box-shadow:0 14px 40px rgba(11,19,32,0.05);overflow:hidden;position:relative}
+  .kicker{font-size:13px;color:var(--muted);display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);margin-bottom:10px}
+  .hero h2{margin:6px 0 10px;font-size:28px}
+  .hero p{color:var(--muted);line-height:1.6}
+  .features{display:flex;gap:10px;margin-top:18px}
+  .feature{flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#f7fbff);text-align:center;font-size:14px;box-shadow:0 8px 20px rgba(11,19,32,0.03)}
+  .hero-visual{border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(11,19,32,0.07);background:#fff;height:100%;}
+  .hero-visual img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform .8s cubic-bezier(.2,.9,.3,1)}
+  .hero-visual:hover img{transform:scale(1.06)}
+
+  /* services */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  .card{padding:18px;border-radius:12px;background:white;box-shadow:0 10px 30px rgba(11,19,32,0.04);transition:transform .28s, box-shadow .28s}
+  .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(11,19,32,0.07)}
+  .card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+
+  /* about */
+  .about{display:flex;align-items:center;gap:20px;margin-top:24px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fcfeff);box-shadow:0 10px 30px rgba(11,19,32,0.03)}
+  .about img{width:220px;height:160px;border-radius:10px;object-fit:cover}
+  .about .txt{flex:1}
+
+  /* contact */
+  .contact{margin-top:24px;display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:start}
+  .contact-form{padding:18px;border-radius:12px;background:white;box-shadow:0 10px 30px rgba(11,19,32,0.04)}
+  .field{display:flex;flex-direction:column;margin-bottom:12px}
+  .field label{font-size:13px;margin-bottom:6px;color:var(--muted)}
+  .field input,.field textarea{padding:12px;border-radius:10px;border:1px solid #e6e9ef;font-size:14px;resize:vertical}
+  .row{display:flex;gap:12px}
+  .success{display:none;padding:12px;border-radius:10px;background:#ecfdf5;color:#065f46;margin-bottom:12px}
+  .error{display:none;padding:12px;border-radius:10px;background:#fff1f2;color:#991b1b;margin-bottom:12px}
+
+  .contact-info{padding:18px;border-radius:12px;background:linear-gradient(180deg,#0d6efd08,#ffffff);box-shadow:0 10px 30px rgba(11,19,32,0.03)}
+  .info-item{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .info-item .icon{width:44px;height:44px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center}
+
+  footer{margin-top:28px;padding:18px;text-align:center;color:var(--muted);font-size:13px}
+
+  /* responsive */
+  @media (max-width:980px){
+    .hero,.contact{grid-template-columns:1fr}
+    .services{grid-template-columns:repeat(2,1fr)}
+    .about{flex-direction:column}
+  }
+  @media (max-width:580px){
+    .services{grid-template-columns:1fr}
+  }
+
+  /* subtle entrance animations */
+  .fade-up{opacity:0;transform:translateY(16px);transition:all .9s cubic-bezier(.2,.9,.3,1)}
+  .in-view{opacity:1;transform:none}
+  .pulse { animation: pulse 2.8s infinite; }
+  @keyframes pulse { 0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)} }
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                <svg class="logo-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Background Circle -->
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="#2E7D8C" stroke-width="10"/>
-                    
-                    <!-- House -->
-                    <polygon points="70,90 100,60 130,90 130,130 70,130" fill="#2E7D8C"/>
-                    <rect x="80" y="100" width="15" height="15" fill="white"/>
-                    <rect x="105" y="100" width="15" height="15" fill="white"/>
-                    <polygon points="95,60 105,50 110,55 110,65" fill="#2E7D8C"/>
-                    
-                    <!-- Truck -->
-                    <rect x="25" y="110" width="35" height="20" fill="#2E7D8C" rx="3"/>
-                    <rect x="30" y="115" width="8" height="6" fill="white"/>
-                    <circle cx="35" cy="135" r="5" fill="none" stroke="#2E7D8C" stroke-width="2"/>
-                    <circle cx="50" cy="135" r="5" fill="none" stroke="#2E7D8C" stroke-width="2"/>
-                    
-                    <!-- Cleaning Brush -->
-                    <line x1="140" y1="110" x2="170" y2="80" stroke="#2E7D8C" stroke-width="4" stroke-linecap="round"/>
-                    <polygon points="165,85 175,75 180,80 170,90" fill="#2E7D8C"/>
-                    
-                    <!-- Sparkles -->
-                    <polygon points="155,70 157,74 161,72 159,76 163,78 159,80 161,84 157,82 155,86 153,82 149,84 153,80 149,78 153,76 151,72 153,74" fill="#2E7D8C"/>
-                    <polygon points="145,95 146,97 148,96 147,98 149,99 147,100 148,102 146,101 145,103 144,101 142,102 144,100 142,99 144,98 143,96 144,97" fill="#2E7D8C"/>
-                </svg>
-                <span class="logo-text">المنارة</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#contact">تواصل معنا</a></li>
-            </ul>
-        </nav>
-    </header>
+<div class="wrap">
+  <header class="fade-up" id="header">
+    <div class="brand">
+      <div class="logo">المنارة</div>
+      <div>
+        <h1>المنارة للخدمات المنزلية</h1>
+        <div class="sub">نقل عفش احترافي — تنظيف منازل — خدمة سريعة وموثوقة</div>
+      </div>
+    </div>
+    <nav>
+      <a class="btn" href="#services">خدماتنا</a>
+      <a class="btn" href="#about">من نحن</a>
+      <a class="btn" href="#contact">تواصل</a>
+      <a class="btn primary" href="tel:+966510192446">اتصل الآن: +966 51 019 2446</a>
+    </nav>
+  </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>
-                <svg class="hero-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Background Circle -->
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="white" stroke-width="8" opacity="0.9"/>
-                    
-                    <!-- House -->
-                    <polygon points="70,90 100,60 130,90 130,130 70,130" fill="white"/>
-                    <rect x="80" y="100" width="15" height="15" fill="#667eea"/>
-                    <rect x="105" y="100" width="15" height="15" fill="#667eea"/>
-                    <polygon points="95,60 105,50 110,55 110,65" fill="white"/>
-                    
-                    <!-- Truck -->
-                    <rect x="25" y="110" width="35" height="20" fill="white" rx="3"/>
-                    <rect x="30" y="115" width="8" height="6" fill="#667eea"/>
-                    <circle cx="35" cy="135" r="5" fill="none" stroke="white" stroke-width="2"/>
-                    <circle cx="50" cy="135" r="5" fill="none" stroke="white" stroke-width="2"/>
-                    
-                    <!-- Cleaning Brush -->
-                    <line x1="140" y1="110" x2="170" y2="80" stroke="white" stroke-width="4" stroke-linecap="round"/>
-                    <polygon points="165,85 175,75 180,80 170,90" fill="white"/>
-                    
-                    <!-- Sparkles -->
-                    <polygon points="155,70 157,74 161,72 159,76 163,78 159,80 161,84 157,82 155,86 153,82 149,84 153,80 149,78 153,76 151,72 153,74" fill="white"/>
-                    <polygon points="145,95 146,97 148,96 147,98 149,99 147,100 148,102 146,101 145,103 144,101 142,102 144,100 142,99 144,98 143,96 144,97" fill="white"/>
-                </svg>
-                شركة المنارة
-            </h1>
-            <p>خدمات نقل العفش وتنظيف المنازل بأعلى جودة واحترافية</p>
+  <section class="hero">
+    <div class="hero-card fade-up" id="heroCard">
+      <span class="kicker">خدمة مميزة</span>
+      <h2>نقل العفش وتنظيف شامل — بأمان وبدون عناء</h2>
+      <p>في المنارة نقدم حلول نقل الأثاث والتغليف والنقل داخل وخارج القصيم، بالإضافة إلى خدمات تنظيف المنازل شاملة (تنظيف عميق، تعقيم، غسيل سجاد). فريق متخصص ومركبات مجهزة.</p>
+
+      <div class="features">
+        <div class="feature">
+          <strong>فريق محترف</strong><br><small class="sub">تدريب وتجهيز</small>
         </div>
-    </section>
-
-    <section id="services" class="services fade-in">
-        <div class="container">
-            <h2 class="section-title">خدماتنا المتميزة</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><defs><linearGradient id='truckBg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23667eea'/><stop offset='100%' style='stop-color:%23764ba2'/></linearGradient></defs><rect width='400' height='300' fill='url(%23truckBg)'/><rect x='50' y='180' width='120' height='60' fill='%23ffffff' rx='10'/><rect x='170' y='160' width='150' height='80' fill='%23ffffff' rx='15'/><circle cx='90' cy='260' r='20' fill='%23333'/><circle cx='280' cy='260' r='20' fill='%23333'/><circle cx='90' cy='260' r='12' fill='%23666'/><circle cx='280' cy='260' r='12' fill='%23666'/><rect x='60' y='190' width='20' height='15' fill='%23667eea'/><rect x='90' y='190' width='20' height='15' fill='%23667eea'/><rect x='120' y='190' width='20' height='15' fill='%23667eea'/><rect x='180' y='170' width='25' height='20' fill='%23764ba2'/><text x='200' y='220' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-size='14' font-weight='bold'>نقل العفش</text><path d='M340 120 L360 100 L380 120 L380 140 L360 150 L340 140 Z' fill='rgba(255,255,255,0.8)'/></svg>" alt="نقل العفش" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 2rem;">
-                    </div>
-                    <div class="service-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>نقل العفش</h3>
-                    <p>نقدم خدمات نقل العفش الاحترافية مع ضمان الحفاظ على سلامة أثاثك. فريقنا المدرب يستخدم أحدث المعدات لضمان نقل آمن وسريع.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><defs><linearGradient id='cleanBg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2300b8d4'/><stop offset='100%' style='stop-color:%2300acc1'/></linearGradient></defs><rect width='400' height='300' fill='url(%23cleanBg)'/><rect x='80' y='80' width='240' height='140' fill='%23ffffff' rx='20'/><rect x='100' y='100' width='60' height='80' fill='%23e3f2fd'/><rect x='180' y='100' width='60' height='80' fill='%23e3f2fd'/><rect x='260' y='100' width='60' height='80' fill='%23e3f2fd'/><polygon points='200,50 220,30 240,50 240,70 200,70' fill='%23ff5722'/><rect x='205' y='55' width='8' height='10' fill='%23ffffff'/><rect x='220' y='55' width='8' height='10' fill='%23ffffff'/><circle cx='120' cy='250' r='8' fill='%2300b8d4' opacity='0.7'/><circle cx='200' cy='260' r='6' fill='%2300acc1' opacity='0.7'/><circle cx='280' cy='250' r='10' fill='%2300b8d4' opacity='0.5'/><text x='200' y='280' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-size='14' font-weight='bold'>تنظيف المنازل</text></svg>" alt="تنظيف المنازل" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 2rem;">
-                    </div>
-                    <div class="service-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>تنظيف المنازل</h3>
-                    <p>خدمات تنظيف شاملة للمنازل والمكاتب باستخدام مواد تنظيف آمنة وصديقة للبيئة. نضمن لك منزلاً نظيفاً ومعقماً.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><defs><linearGradient id='insuranceBg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%234caf50'/><stop offset='100%' style='stop-color:%232e7d32'/></linearGradient></defs><rect width='400' height='300' fill='url(%23insuranceBg)'/><circle cx='200' cy='150' r='80' fill='%23ffffff' opacity='0.9'/><circle cx='200' cy='150' r='60' fill='%234caf50'/><path d='M170 150 L190 170 L230 130' stroke='%23ffffff' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/><rect x='120' y='80' width='40' height='30' fill='rgba(255,255,255,0.3)' rx='5'/><rect x='240' y='190' width='35' height='25' fill='rgba(255,255,255,0.3)' rx='5'/><rect x='320' y='120' width='30' height='20' fill='rgba(255,255,255,0.3)' rx='5'/><circle cx='100' cy='200' r='15' fill='rgba(255,255,255,0.2)'/><circle cx='320' cy='220' r='12' fill='rgba(255,255,255,0.2)'/><text x='200' y='280' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-size='14' font-weight='bold'>ضمان وتأمين</text></svg>" alt="التأمين والضمان" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 2rem;">
-                    </div>
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>التأمين والضمان</h3>
-                    <p>جميع خدماتنا مؤمنة ومضمونة. نتحمل المسؤولية الكاملة عن سلامة ممتلكاتك ونقدم ضماناً شاملاً على جميع أعمالنا.</p>
-                </div>
-            </div>
+        <div class="feature">
+          <strong>مركبات آمنة</strong><br><small class="sub">معدات تغليف حديثة</small>
         </div>
-    </section>
-
-    <section id="about" class="about fade-in">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>لماذا تختار شركة المنارة؟</h2>
-                    <p>شركة المنارة هي إحدى الشركات الرائدة في مجال خدمات نقل العفش وتنظيف المنازل في منطقة القصيم والمملكة العربية السعودية.</p>
-                    <p>نتميز بخبرة واسعة وفريق عمل محترف مدرب على أعلى المستويات. نستخدم أحدث التقنيات والمعدات لضمان تقديم أفضل الخدمات لعملائنا الكرام.</p>
-                    <p>رضاكم هو هدفنا الأول، ونسعى دائماً لتجاوز توقعاتكم من خلال الجودة العالية والالتزام بالمواعيد والأسعار المناسبة.</p>
-                </div>
-                <div class="about-image">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'><defs><linearGradient id='aboutBg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23667eea'/><stop offset='100%' style='stop-color:%23764ba2'/></linearGradient><filter id='glow'><feGaussianBlur stdDeviation='3' result='coloredBlur'/><feMerge><feMergeNode in='coloredBlur'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><rect width='600' height='400' fill='url(%23aboutBg)'/><circle cx='150' cy='100' r='60' fill='rgba(255,255,255,0.15)'/><circle cx='450' cy='80' r='40' fill='rgba(255,255,255,0.1)'/><rect x='200' y='150' width='200' height='120' rx='20' fill='rgba(255,255,255,0.2)' filter='url(%23glow)'/><circle cx='250' cy='180' r='15' fill='%23ffffff'/><rect x='280' y='170' width='80' height='8' rx='4' fill='%23ffffff'/><rect x='280' y='185' width='60' height='6' rx='3' fill='rgba(255,255,255,0.7)'/><rect x='280' y='200' width='100' height='6' rx='3' fill='rgba(255,255,255,0.7)'/><circle cx='320' cy='230' r='8' fill='%2300ff88'/><circle cx='340' cy='245' r='6' fill='%23ff6b6b'/><circle cx='360' cy='235' r='7' fill='%23ffd93d'/><path d='M100 350 Q300 300 500 350' stroke='rgba(255,255,255,0.3)' stroke-width='3' fill='none'/><text x='300' y='340' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold'>شركة المنارة</text><text x='300' y='365' text-anchor='middle' fill='rgba(255,255,255,0.8)' font-family='Arial' font-size='14'>الخبرة والاحترافية</text></svg>" alt="شركة المنارة">
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-text">عميل سعيد</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">5+</div>
-                            <div class="stat-text">سنوات خبرة</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-text">خدمة العملاء</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="feature">
+          <strong>خدمة سريعة</strong><br><small class="sub">حجز مرن ومواعيد مريحة</small>
         </div>
-    </section>
+      </div>
 
-    <section id="contact" class="contact fade-in">
-        <div class="container">
-            <div class="contact-header">
-                <div class="contact-header-image">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><defs><linearGradient id='contactBg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23667eea'/><stop offset='100%' style='stop-color:%23764ba2'/></linearGradient></defs><rect width='400' height='300' fill='url(%23contactBg)'/><circle cx='200' cy='150' r='80' fill='rgba(255,255,255,0.2)'/><rect x='160' y='120' width='80' height='60' rx='10' fill='%23ffffff'/><circle cx='180' cy='140' r='8' fill='%23667eea'/><rect x='195' y='135' width='30' height='4' rx='2' fill='%23667eea'/><rect x='195' y='145' width='25' height='4' rx='2' fill='%23764ba2'/><rect x='195' y='155' width='35' height='4' rx='2' fill='%23667eea'/><path d='M300 100 L320 120 L340 100' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'/><circle cx='100' cy='80' r='15' fill='rgba(255,255,255,0.3)'/><circle cx='320' cy='220' r='12' fill='rgba(255,255,255,0.3)'/><text x='200' y='250' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-size='16' font-weight='bold'>تواصل معنا</text></svg>" alt="تواصل معنا" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <h2 class="section-title">تواصل معنا</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>معلومات التواصل</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>رقم الهاتف</h4>
-                            <p><a href="tel:+966510192446">+966510192446</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>البريد الإلكتروني</h4>
-                            <p><a href="mailto:omarmerano500@gmail.com">omarmerano500@gmail.com</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>العنوان</h4>
-                            <p>القصيم، المملكة العربية السعودية</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>أرسل لنا رسالة</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">الاسم</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">رقم الهاتف</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">نوع الخدمة</label>
-                            <select id="service" name="service" style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: 'Cairo', sans-serif;">
-                                <option value="نقل العفش">نقل العفش</option>
-                                <option value="تنظيف المنازل">تنظيف المنازل</option>
-                                <option value="نقل العفش وتنظيف المنازل">نقل العفش وتنظيف المنازل</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">الرسالة</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">إرسال الرسالة</button>
-                    </form>
-                </div>
-            </div>
+      <div style="margin-top:18px;display:flex;gap:10px;">
+        <a class="btn primary pulse" href="tel:+966510192446">حجز سريع</a>
+        <a class="btn" href="mailto:omarmerano500@gmail.com?subject=استفسار%20من%20موقع%20المنارة">أرسل بريدًا</a>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-up" id="visual">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="خدمة نقل و تنظيف">
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="card fade-up">
+      <img src="https://images.unsplash.com/photo-1598300102758-7f1a8ab7b5d1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="نقل عفش">
+      <h3>نقل عفش</h3>
+      <p class="sub">تغليف احترافي، نقل داخلي وخارجي، فك وتركيب أثاث.</p>
+    </div>
+    <div class="card fade-up">
+      <img src="https://images.unsplash.com/photo-1581574205029-77d2d2b242d7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="تنظيف عام">
+      <h3>تنظيف منازل</h3>
+      <p class="sub">تنظيف شامل، تعقيم، غسيل سجاد وكنب.</p>
+    </div>
+    <div class="card fade-up">
+      <img src="https://images.unsplash.com/photo-1600718374962-db7b323b3b8b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="خدمات إضافية">
+      <h3>خدمات إضافية</h3>
+      <p class="sub">تخزين مؤقت، مساعدات يومية، خدمات فورية.</p>
+    </div>
+  </section>
+
+  <section id="about" class="about fade-up">
+    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="فريق العمل">
+    <div class="txt">
+      <h3>من نحن</h3>
+      <p class="sub">المنارة شركة محلية مقرها القصيم، المملكة العربية السعودية. نحن نؤمن بالاحترافية والصدق في المواعيد، ونستخدم معدات عالية الجودة وفرق مدربة لتقديم أفضل تجربة نقل وتنظيف.</p>
+      <p style="margin-top:8px"><strong>العنوان:</strong> القصيم, المملكة العربية السعودية</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-form fade-up">
+      <h3>تواصل معنا</h3>
+      <div class="success" id="successBox">تم إرسال رسالتك بنجاح — سنرد عليك في أقرب وقت.</div>
+      <div class="error" id="errorBox">حدث خطأ أثناء الإرسال. حاول لاحقًا أو استخدم رابط البريد الإلكتروني.</div>
+
+      <form id="contactForm" method="POST" action="https://formspree.io/f/xandrdbq">
+        <div class="field">
+          <label for="name">الاسم الكامل</label>
+          <input id="name" name="name" type="text" required placeholder="اسمك">
         </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                <svg style="width: 60px; height: 60px; margin-left: 15px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Background Circle -->
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="#667eea" stroke-width="8"/>
-                    
-                    <!-- House -->
-                    <polygon points="70,90 100,60 130,90 130,130 70,130" fill="#667eea"/>
-                    <rect x="80" y="100" width="15" height="15" fill="white"/>
-                    <rect x="105" y="100" width="15" height="15" fill="white"/>
-                    <polygon points="95,60 105,50 110,55 110,65" fill="#667eea"/>
-                    
-                    <!-- Truck -->
-                    <rect x="25" y="110" width="35" height="20" fill="#667eea" rx="3"/>
-                    <rect x="30" y="115" width="8" height="6" fill="white"/>
-                    <circle cx="35" cy="135" r="5" fill="none" stroke="#667eea" stroke-width="2"/>
-                    <circle cx="50" cy="135" r="5" fill="none" stroke="#667eea" stroke-width="2"/>
-                    
-                    <!-- Cleaning Brush -->
-                    <line x1="140" y1="110" x2="170" y2="80" stroke="#667eea" stroke-width="4" stroke-linecap="round"/>
-                    <polygon points="165,85 175,75 180,80 170,90" fill="#667eea"/>
-                    
-                    <!-- Sparkles -->
-                    <polygon points="155,70 157,74 161,72 159,76 163,78 159,80 161,84 157,82 155,86 153,82 149,84 153,80 149,78 153,76 151,72 153,74" fill="#667eea"/>
-                    <polygon points="145,95 146,97 148,96 147,98 149,99 147,100 148,102 146,101 145,103 144,101 142,102 144,100 142,99 144,98 143,96 144,97" fill="#667eea"/>
-                </svg>
-                <h3>شركة المنارة</h3>
-            </div>
-            <p>شريكك الموثوق في خدمات نقل العفش وتنظيف المنازل</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-            </div>
-            <p>&copy; 2024 شركة المنارة. جميع الحقوق محفوظة.</p>
+        <div class="row">
+          <div class="field" style="flex:1">
+            <label for="phone">رقم الهاتف</label>
+            <input id="phone" name="phone" type="tel" required placeholder="+9665...">
+          </div>
+          <div class="field" style="flex:1">
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" name="_replyto" type="email" required placeholder="example@mail.com">
+          </div>
         </div>
-    </footer>
+        <div class="field">
+          <label for="service">نوع الخدمة</label>
+          <select id="service" name="service" required style="padding:12px;border-radius:10px;border:1px solid #e6e9ef">
+            <option value="">اختر الخدمة</option>
+            <option>نقل عفش</option>
+            <option>تنظيف منازل</option>
+            <option>تخزين مؤقت</option>
+            <option>خدمة أخرى</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">الرسالة</label>
+          <textarea id="message" name="message" rows="5" placeholder="اكتب تفاصيل الطلب أو استفسارك"></textarea>
+        </div>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        <div style="display:flex;gap:10px;align-items:center">
+          <button type="submit" class="btn primary">إرسال الرسالة</button>
+          <button type="button" class="btn" id="mailtoBtn">أرسل عبر بريدك</button>
+        </div>
+      </form>
+      <p style="margin-top:12px;color:var(--muted);font-size:13px">أو أرسل مباشرة إلى: <a href="mailto:omarmerano500@gmail.com">omarmerano500@gmail.com</a></p>
+    </div>
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+    <aside class="contact-info fade-up">
+      <h4>معلومات الاتصال</h4>
+      <div class="info-item"><div class="icon">📍</div><div><strong>العنوان</strong><div class="sub">القصيم، المملكة العربية السعودية</div></div></div>
+      <div class="info-item"><div class="icon">📞</div><div><strong>الهاتف</strong><div class="sub">+966 51 019 2446</div></div></div>
+      <div class="info-item"><div class="icon">✉️</div><div><strong>البريد</strong><div class="sub"><a href="mailto:omarmerano500@gmail.com">omarmerano500@gmail.com</a></div></div></div>
+      <div style="margin-top:12px"><small class="sub">ساعات العمل: من السبت إلى الخميس 8 صباحًا - 8 مساءً</small></div>
+    </aside>
+  </section>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+  <footer>
+    © <span id="year"></span> المنارة — جميع الحقوق محفوظة
+  </footer>
+</div>
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+<script>
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const service = formData.get('service');
-            const message = formData.get('message');
-            
-            // Create email body
-            const subject = `طلب خدمة من ${name} - شركة المنارة`;
-            const body = `الاسم: ${name}%0D%0A` +
-                        `البريد الإلكتروني: ${email}%0D%0A` +
-                        `رقم الهاتف: ${phone}%0D%0A` +
-                        `نوع الخدمة: ${service}%0D%0A%0D%0A` +
-                        `الرسالة:%0D%0A${message}`;
-            
-            // Create mailto link
-            const mailtoLink = `mailto:omarmerano500@gmail.com?subject=${subject}&body=${body}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            alert('سيتم توجيهك إلى برنامج البريد الإلكتروني لإرسال الرسالة');
-            
-            // Reset form
-            this.reset();
-        });
+  const form = document.getElementById('contactForm');
+  const successBox = document.getElementById('successBox');
+  const errorBox = document.getElementById('errorBox');
 
-        // Add loading animation to service cards
-        window.addEventListener('load', () => {
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.animation = `fadeInUp 0.6s ease-out forwards`;
-                }, index * 200);
-            });
-        });
-    </script>
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    successBox.style.display = 'none';
+    errorBox.style.display = 'none';
+
+    const action = form.getAttribute('action');
+    if(!action || action.includes('YOUR_FORMSPREE_ENDPOINT')){
+      errorBox.style.display='block';
+      errorBox.textContent = 'لم يتم إعداد استلام البريد آليًا. تحقق من رابط الفورم.';
+      window.scrollTo({top: form.offsetTop - 30, behavior:'smooth'});
+      return;
+    }
+
+    const fd = new FormData(form);
+    try{
+      const resp = await fetch(action, {method:'POST', body: fd, headers:{'Accept':'application/json'}});
+      const data = await resp.json().catch(()=>({ok:resp.ok}));
+      if(resp.ok || data.ok || data.success){
+        successBox.style.display = 'block';
+        form.reset();
+        window.scrollTo({top: form.offsetTop - 30, behavior:'smooth'});
+      } else {
+        throw new Error('send-failed');
+      }
+    }catch(err){
+      errorBox.style.display='block';
+      errorBox.textContent='فشل الإرسال آليًا — تأكد من إعداد Formspree بشكل صحيح.';
+      window.scrollTo({top: form.offsetTop - 30, behavior:'smooth'});
+    }
+  });
+
+  document.getElementById('mailtoBtn').addEventListener('click',()=>{
+    const name = encodeURIComponent(document.getElementById('name').value || 'بدون اسم');
+    const phone = encodeURIComponent(document.getElementById('phone').value || '');
+    const email = encodeURIComponent(document.getElementById('email').value || '');
+    const service = encodeURIComponent(document.getElementById('service').value || '');
+    const message = encodeURIComponent(document.getElementById('message').value || '');
+    const body = `الاسم: ${name}%0Aالهاتف: ${phone}%0Aالبريد: ${email}%0Aالخدمة المطلوبة: ${service}%0A%0Aالتفاصيل:%0A${message}`;
+    window.location.href = `mailto:omarmerano500@gmail.com?subject=${encodeURIComponent('استفسار من موقع المنارة')}&body=${body}`;
+  });
+</script>
 </body>
 </html>
