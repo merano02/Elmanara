@@ -24,7 +24,9 @@
 
     /* شاشة التحميل */
     #preloader { position: fixed; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg,var(--primary),var(--secondary)); display:flex; align-items:center; justify-content:center; z-index:9999; flex-direction:column; color:white; font-size:22px; font-weight:bold; }
-    .loader { width:60px; height:60px; border:6px solid rgba(255,255,255,0.3); border-top:6px solid #fff; border-radius:50%; animation: spin 1s linear infinite; margin-bottom:15px; }
+    #preloader img { width:100px; height:100px; object-fit:contain; margin-bottom:15px; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100% { transform:scale(1);} 50% { transform:scale(1.1);} }
+    .loader { width:50px; height:50px; border:6px solid rgba(255,255,255,0.3); border-top:6px solid #fff; border-radius:50%; animation: spin 1s linear infinite; margin-top:10px; }
     @keyframes spin { 100% { transform: rotate(360deg);} }
     #preloader.fade-out { opacity:0; visibility:hidden; transition:0.6s ease; }
 
@@ -72,12 +74,12 @@
 </head>
 <body>
 <div id="preloader">
+  <img src="images/logo.jpg" alt="شعار المنارة">
   <div class="loader"></div>
-  جاري التحميل...
 </div>
 <header>
   <div class="logo">
-    <img src="images/logo.svg" alt="شعار شركة المنارة">
+    <img src="images/logo.jpg" alt="شعار شركة المنارة">
     <span><strong>المنارة</strong></span>
   </div>
   <nav>
@@ -152,7 +154,7 @@
 </section>
 <footer>
   <div class="footer-logo">
-    <img src="images/logo.svg" alt="شعار المنارة">
+    <img src="images/logo.jpg" alt="شعار المنارة">
   </div>
   <p>© 2025 شركة المنارة - جميع الحقوق محفوظة</p>
 </footer>
